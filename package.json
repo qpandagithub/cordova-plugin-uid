@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lionelhe/cordova-plugin-uid.git"
+    "url": "git+https://github.com/awais-vteams/cordova-plugin-uid.git"
   },
   "keywords": [
     "cordova",
@@ -23,7 +23,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lionelhe/cordova-plugin-uid/issues"
+    "url": "https://github.com/awais-vteams/cordova-plugin-uid/issues"
   },
-  "homepage": "https://github.com/lionelhe/cordova-plugin-uid#readme"
+  "homepage": "https://github.com/awais-vteams/cordova-plugin-uid#readme"
 }
