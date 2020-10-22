@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-<<<<<<< HEAD
-	id="latest-cordova-plugin-uid"
-	version="1.3.5">
-=======
 	id="cordova-plugin-awais-vteams-uid"
-	version="1.3.6">
->>>>>>> 911c9bac63c5c574ebdb1271f818cb1ce3dbf5a9
+	version="1.3.7">
 	<name>UID</name>
 	<description>Cordova plugin to get unique identifiers: UUID, IMEI, IMSI, ICCID and MAC.</description>
 	<license>MIT</license>
