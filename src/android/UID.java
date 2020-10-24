@@ -11,6 +11,7 @@ import android.telephony.TelephonyManager;
 import android.provider.Settings;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
