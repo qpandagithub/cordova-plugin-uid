@@ -52,7 +52,7 @@ public class UID extends CordovaPlugin {
         Context context = cordova.getActivity().getApplicationContext();
         UID.uuid = getUuid(context);
         UID.imei = getImei(context);
-        //UID.imsi = getImsi(context);
+        UID.imsi = getImsi(context);
         //UID.iccid = getIccid(context);
         UID.mac = getMac(context);
     }
@@ -126,7 +126,8 @@ public class UID extends CordovaPlugin {
      */
     public String getImsi(Context context) {
         final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String imsi = mTelephony.getSubscriberId();
+        String imsi = mTelephony.getLine1Number();
+        Log.d("IMSI:", imsi);
         return imsi;
     }
 
