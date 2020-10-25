@@ -1,6 +1,6 @@
 {
   "name": "@awais-vteams/cordova-plugin-uid",
-  "version": "1.3.9",
+  "version": "1.3.10",
   "description": "Cordova plugin to get unique identifiers: UUID, IMEI, IMSI, ICCID and MAC.",
   "main": "www/uid.js",
   "scripts": {
