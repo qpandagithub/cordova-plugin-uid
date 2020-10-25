@@ -7,6 +7,8 @@ package org.hygieiasoft.cordova.uid;
 
 import android.content.Context;
 import android.os.Build;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.provider.Settings;
 import android.net.wifi.WifiInfo;
@@ -126,9 +128,23 @@ public class UID extends CordovaPlugin {
      * @return
      */
     public String getImsi(Context context) {
-        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String imsi = mTelephony.getLine1Number();
-        Log.d("IMSI:", imsi);
+
+        String imsi = "";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<SubscriptionInfo> subscription = SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+            for (int i = 0; i < subscription.size(); i++) {
+                SubscriptionInfo info = subscription.get(i);
+                imsi = info.getNumber();
+                /*Log.i("IMSI", "number " + info.getNumber());
+                Log.d("IMSI", "network name : " + info.getCarrierName());
+                Log.d("IMSI", "country iso " + info.getCountryIso());*/
+            }
+        } else {
+            final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            imsi = mTelephony.getLine1Number();
+        }
+
         return imsi;
     }
 
