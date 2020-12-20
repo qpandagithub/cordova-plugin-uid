@@ -20,7 +20,7 @@
     "iccid",
     "mac"
   ],
-  "author": "Awais",
+  "author": "Darren",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/qpandagithub/cordova-plugin-uid/issues"
