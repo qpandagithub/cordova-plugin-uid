@@ -34,6 +34,7 @@
 			</feature>
 		</config-file>
     <source-file src="src/ios/Idfa.swift" />
+    <dependency id="cordova-plugin-add-swift-support" spec="~1.7.2" />
 	</platform>
 
 </plugin>

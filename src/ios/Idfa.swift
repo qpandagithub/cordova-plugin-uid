@@ -3,7 +3,8 @@ import AdSupport
 import AppTrackingTransparency
 
 @objc(UID) class UID : CDVPlugin {
-  @objc func getUID(command: CDVInvokedUrlCommand) {
+  @objc(getUID:)
+  func getUID(_ command: CDVInvokedUrlCommand) {
     var id: String?
     var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "The Plugin Failed");
     
