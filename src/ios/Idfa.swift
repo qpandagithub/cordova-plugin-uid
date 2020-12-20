@@ -13,22 +13,26 @@ import AppTrackingTransparency
           case .authorized:
             pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "authorized");
             print("UID: Authorized")
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
           case .denied:
             pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "denied");
             print("UID: Denied")
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
           case .notDetermined:
             pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "notDetermined");
             print("UID: Not Determined")
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
           case .restricted:
             pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "restricted");
             print("UID: Restricted")
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
           @unknown default:
             pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "unknown");
             print("UID: Unknown")
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
         }
       }
     }
-    self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
   @objc(getIdfa:)
