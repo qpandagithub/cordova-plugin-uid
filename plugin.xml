@@ -9,8 +9,8 @@
 	<repo>https://github.com/qpandagithub/cordova-plugin-uid</repo>
 	<issue>https://github.com/qpandagithub/cordova-plugin-uid/issues</issue>
 
-	<js-module src="www/uid.js" name="uid">
-		<clobbers target="cordova.plugins.uid" />
+	<js-module src="www/uid.js" name="UID">
+		<clobbers target="UID" />
 	</js-module>
 
 	<platform name="android">
@@ -33,6 +33,12 @@
 				<param name="ios-package" value="UID" />
 			</feature>
 		</config-file>
+		
+
+		<config-file parent="NSUserTrackingUsageDescription" target="*-Info.plist">
+				<string>熊猫跨境想要访问您的设备ID，进而追踪优化我们的服务</string>
+		</config-file>
+
     <source-file src="src/ios/Idfa.swift" />
     <dependency id="cordova-plugin-add-swift-support" spec="~1.7.2" />
 	</platform>
