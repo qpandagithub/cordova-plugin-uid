@@ -6,7 +6,7 @@ import AppTrackingTransparency
   @objc(getUID:)
   func getUID(_ command: CDVInvokedUrlCommand) {
     var id: String?
-    var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "The Plugin Failed");
+    var pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "EA7583CD-A667-48BC-B806-42ECB2B48606");
     
     if #available(iOS 14, *) {
       ATTrackingManager.requestTrackingAuthorization { status in
@@ -33,7 +33,10 @@ import AppTrackingTransparency
     if id != nil {
       pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: id);
     }
-      
+    else {
+        print("UID - IDFA 获取失败")
+    }
+    
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 }
