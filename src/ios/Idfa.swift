@@ -3,40 +3,38 @@ import AdSupport
 import AppTrackingTransparency
 
 @objc(UID) class UID : CDVPlugin {
-  @objc(getUID:)
-  func getUID(_ command: CDVInvokedUrlCommand) {
-    var id: String?
-    var pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "EA7583CD-A667-48BC-B806-42ECB2B48606");
-    
+  @objc(requestPermission:)
+  func requestPermission(_ command: CDVInvokedUrlCommand) {
+    var pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "");
+
     if #available(iOS 14, *) {
       ATTrackingManager.requestTrackingAuthorization { status in
         switch status {
           case .authorized:
-            id = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+            pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "authorized");
+            print("UID: Authorized")
           case .denied:
-            // Tracking authorization dialog was
-            // shown and permission is denied
-            print("Denied")
+            pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "denied");
+            print("UID: Denied")
           case .notDetermined:
-            // Tracking authorization dialog has not been shown
-            print("Not Determined")
+            pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "notDetermined");
+            print("UID: Not Determined")
           case .restricted:
-            print("Restricted")
+            pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "restricted");
+            print("UID: Restricted")
           @unknown default:
-            print("Unknown")
+            pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "unknown");
+            print("UID: Unknown")
         }
       }
-    } else {
-      id = ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
+    self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
+  }
 
-    if id != nil {
-      pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: id);
-    }
-    else {
-        print("UID - IDFA 获取失败")
-    }
-    
+  @objc(getIdfa:)
+  func getIdfa(_ command: CDVInvokedUrlCommand) {
+    let id: String? = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    let pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: id);
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 }
