@@ -1,5 +1,5 @@
 {
-  "name": "@awais-vteams/cordova-plugin-uid",
+  "name": "@qpandagithub/cordova-plugin-uid",
   "version": "1.3.10",
   "description": "Cordova plugin to get unique identifiers: UUID, IMEI, IMSI, ICCID and MAC.",
   "main": "www/uid.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awais-vteams/cordova-plugin-uid.git"
+    "url": "git+https://github.com/qpandagithub/cordova-plugin-uid.git"
   },
   "keywords": [
     "cordova",
@@ -23,7 +23,7 @@
   "author": "Awais",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/awais-vteams/cordova-plugin-uid/issues"
+    "url": "https://github.com/qpandagithub/cordova-plugin-uid/issues"
   },
-  "homepage": "https://github.com/awais-vteams/cordova-plugin-uid#readme"
+  "homepage": "https://github.com/qpandagithub/cordova-plugin-uid#readme"
 }

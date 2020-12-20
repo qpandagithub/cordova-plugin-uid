@@ -6,13 +6,13 @@ Cordova plugin to get unique identifiers: UUID, IMEI, IMSI, ICCID and MAC.
 This plugin defines a `cordova.plugins.uid` object.
 The object is not available until after the `deviceready` event.
 
-		document.addEventListener('deviceready', onDeviceReady, false);
-		function onDeviceReady() {
-				console.log(cordova.plugins.uid.IMEI);
-		}
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+	console.log(cordova.plugins.uid.IMEI);
+}
 
 ## Installation
-		cordova plugin add https://github.com/ivanchaz/cordova-plugin-uid
+cordova plugin add https://github.com/qpandagithub/cordova-plugin-uid
 
 ## Properties
 
