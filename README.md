@@ -1,5 +1,5 @@
 # cordova.plugins.uid
-Note: This plugin is forked from this [repository](https://github.com/hygieiasoft/cordova-plugin-uid).
+Note: This plugin is forked from this [repository](https://github.com/qpandagithub/cordova-plugin-uid).
 
 Cordova plugin to get unique identifiers: UUID, IMEI, IMSI, ICCID and MAC.
 

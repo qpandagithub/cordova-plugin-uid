@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2014 HygieiaSoft
+ * Copyright (c) 2020 Darren
  * Distributed under the MIT License.
  * (See accompanying file LICENSE or copy at http://opensource.org/licenses/MIT)
  */
-package org.hygieiasoft.cordova.uid;
+package cn.com.pandashop.cordova.uid;
 
 import android.content.Context;
 import android.os.Build;
