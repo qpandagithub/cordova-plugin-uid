@@ -32,6 +32,10 @@ import AppTrackingTransparency
             self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
         }
       }
+    } else{
+         print("UID: Authorized Legecy IOS version")
+         pluginResult = CDVPluginResult (status: CDVCommandStatus_OK, messageAs: "authorized");
+         self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
     }
   }
 
