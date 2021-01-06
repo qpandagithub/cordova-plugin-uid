@@ -12,11 +12,17 @@
 	<js-module src="www/uid.js" name="UID">
 		<clobbers target="UID" />
 	</js-module>
+	<js-module src="www/safe-area.js" name="SafeArea">
+		<clobbers target="SafeArea" />
+	</js-module>
 
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="UID">
 				<param name="android-package" value="cn.com.pandashop.cordova.uid.UID" />
+			</feature>
+			<feature name="SafeArea">
+				<param name="android-package" value="cn.com.pandashop.cordova.safearea.SafeArea" />
 			</feature>
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/*">
@@ -25,6 +31,7 @@
 		</config-file>
 
 		<source-file src="src/android/UID.java" target-dir="src/cn/com/pandashop/cordova/uid" />
+		<source-file src="src/android/SafeArea.java" target-dir="src/cn/com/pandashop/cordova/safearea" />
 	</platform>
 
 	<platform name="ios">
