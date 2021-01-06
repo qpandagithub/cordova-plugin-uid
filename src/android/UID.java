@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 HygieiaSoft
+ * Copyright (c) 2020 Darren
  * Distributed under the MIT License.
  * (See accompanying file LICENSE or copy at http://opensource.org/licenses/MIT)
  */
@@ -103,15 +103,20 @@ public class UID extends CordovaPlugin {
      */
     public String getImei(Context context) {
         String deviceId;
-        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (mTelephony.getDeviceId() != null) {
-            deviceId = mTelephony.getDeviceId();
-        } else {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             deviceId = Settings.Secure.getString(
                     context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
+        } else {
+            final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (mTelephony.getDeviceId() != null) {
+                deviceId = mTelephony.getDeviceId();
+            } else {
+                deviceId = Settings.Secure.getString(
+                        context.getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
+            }
         }
-        
         return deviceId;
     }
 
