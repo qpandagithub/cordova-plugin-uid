@@ -39,6 +39,9 @@
 			<feature name="UID">
 				<param name="ios-package" value="UID" />
 			</feature>
+			<feature name="SafeArea">
+				<param name="ios-package" value="SafeArea" />
+			</feature>
 		</config-file>
 		
 
@@ -47,6 +50,7 @@
 		</config-file>
 
     <source-file src="src/ios/Idfa.swift" />
+    <source-file src="src/ios/SafeArea.swift" />
     <dependency id="cordova-plugin-add-swift-support" spec="~1.7.2" />
 	</platform>
 
