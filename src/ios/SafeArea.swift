@@ -4,6 +4,10 @@ import Foundation
   @objc(getSafeArea:)
   func getSafeArea(_ command: CDVInvokedUrlCommand) {
     var response : [String:CGFloat] = [String:CGFloat]()
+    let density: CGFloat = UIScreen.main.scale
+    response["density"] = density
+    response["left"] = 0
+    response["right"] = 0
     
     if #available(iOS 13.0, *) {
       let window = UIApplication.shared.windows[0]
@@ -11,15 +15,16 @@ import Foundation
       response["bottom"] = window.safeAreaInsets.bottom
       response["left"] = 0
       response["right"] = 0
-      response["density"] = 1
     }
     else if #available(iOS 11.0, *) {
       let window = UIApplication.shared.keyWindow
-      response["top"] = window?.safeAreaInsets.top
-      response["bottom"] = window?.safeAreaInsets.bottom
-      response["left"] = 0
-      response["right"] = 0
-      response["density"] = 1
+        if (window != nil) {
+          response["top"] = window!.safeAreaInsets.top
+          response["bottom"] = window!.safeAreaInsets.bottom
+        } else {
+          response["top"] = 0
+          response["bottom"] = 0
+        }
     }
     print("获取安全区域:")
     print(response)
