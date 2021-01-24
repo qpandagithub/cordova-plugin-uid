@@ -14,6 +14,8 @@ import android.provider.Settings;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
+import android.view.DisplayCutout;
+import android.view.WindowInsets;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
@@ -48,22 +50,30 @@ public class SafeArea extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("getSafeArea")) {
+
             JSONObject res = new JSONObject();
-            DisplayCutout displayCutout = cordova.getActivity().getWindow().getDecorView().getRootWindowInsets().getDisplayCutout();
-            Float density = cordova.getContext().getResources().getDisplayMetrics().density;
+            final WindowInsets windowInsets;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                windowInsets = cordova.getActivity().getWindow().getDecorView().getRootWindowInsets();
 
-            Log.e("TAG", "安全区域距离屏幕左边的距离 SafeInsetLeft:" + (displayCutout.getSafeInsetLeft() / density));
-            Log.e("TAG", "安全区域距离屏幕右部的距离 SafeInsetRight:" + (displayCutout.getSafeInsetRight() / density));
-            Log.e("TAG", "安全区域距离屏幕顶部的距离 SafeInsetTop:" + (displayCutout.getSafeInsetTop() / density));
-            Log.e("TAG", "安全区域距离屏幕底部的距离 SafeInsetBottom:" + (displayCutout.getSafeInsetBottom() / density));
-            Log.e("TAG", "像素密度:" + density);
+                DisplayCutout displayCutout = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    displayCutout = windowInsets.getDisplayCutout();
+                    Float density = cordova.getContext().getResources().getDisplayMetrics().density;
 
-            res.put("left", (displayCutout.getSafeInsetLeft() / density));
-            res.put("right", (displayCutout.getSafeInsetRight() / density));
-            res.put("top", (displayCutout.getSafeInsetTop() / density));
-            res.put("bottom", (displayCutout.getSafeInsetBottom() / density));
-            res.put("density", density);
+                    Log.e("TAG", "安全区域距离屏幕左边的距离 SafeInsetLeft:" + (displayCutout.getSafeInsetLeft() / density));
+                    Log.e("TAG", "安全区域距离屏幕右部的距离 SafeInsetRight:" + (displayCutout.getSafeInsetRight() / density));
+                    Log.e("TAG", "安全区域距离屏幕顶部的距离 SafeInsetTop:" + (displayCutout.getSafeInsetTop() / density));
+                    Log.e("TAG", "安全区域距离屏幕底部的距离 SafeInsetBottom:" + (displayCutout.getSafeInsetBottom() / density));
+                    Log.e("TAG", "像素密度:" + density);
+                    res.put("left", (displayCutout.getSafeInsetLeft() / density));
+                    res.put("right", (displayCutout.getSafeInsetRight() / density));
+                    res.put("top", (displayCutout.getSafeInsetTop() / density));
+                    res.put("bottom", (displayCutout.getSafeInsetBottom() / density));
+                    res.put("density", density);
+                }
 
+            }
             callbackContext.success(res);
         } else {
             return false;
